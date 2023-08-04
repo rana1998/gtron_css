@@ -37,38 +37,38 @@ $db = getDB();
     // Assuming you have the database connection object stored in $db
 
     // Validate Full Name: Must not be empty and can contain only letters, spaces, and dashes
-    // if (empty($user_name) || !preg_match("/^[a-zA-Z\- ]+$/", $user_name)) {
-    //     echo "Error: Please enter a valid full name.";
-    //     return;
-    // }
+    if (empty($user_name) || !preg_match("/^[a-zA-Z\- ]+$/", $user_name)) {
+        echo "Error: Please enter a valid full name.";
+        return;
+    }
 
-    // // Validate Email Address: Must be a valid email format
-    // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //     echo "Error: Please enter a valid email address.";
-    //     return;
-    // }
+    // Validate Email Address: Must be a valid email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Error: Please enter a valid email address.";
+        return;
+    }
 
-    // // Validate Country: Must not be empty and can contain only letters, spaces, and dashes
-    // if (empty($country) || !preg_match("/^[a-zA-Z\- ]+$/", $country)) {
-    //     echo "Error: Please enter a valid country name.";
-    //     return;
-    // }
+    // Validate Country: Must not be empty and can contain only letters, spaces, and dashes
+    if (empty($country) || !preg_match("/^[a-zA-Z\- ]+$/", $country)) {
+        echo "Error: Please enter a valid country name.";
+        return;
+    }
 
-    // // Validate Contact Number: Must not be empty and can contain only digits and optional plus sign at the beginning
-    // if (empty($contact_no) || !preg_match("/^\+?[0-9]+$/", $contact_no)) {
-    //     echo "Error: Please enter a valid contact number.";
-    //     return;
-    // }
+    // Validate Contact Number: Must not be empty and can contain only digits and optional plus sign at the beginning
+    if (empty($contact_no) || !preg_match("/^\+?[0-9]+$/", $contact_no)) {
+        echo "Error: Please enter a valid contact number.";
+        return;
+    }
     
     // Call the insert_pre_registration_form method
     $response = GeneralHelper::insert_pre_registration_form($db, $user_name, $email, $country, $contact_no, $message, $referrer_user_id);
 
-    echo $response;
+    // echo $response;
     
     if($response['msg'] == 'success') {
         $reffrelLink = $response['reffrelLink'];
 
-        echo $reffrelLink;
+        // echo $reffrelLink;
 
         exit();
 

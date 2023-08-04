@@ -130,46 +130,6 @@ class GeneralHelper
 		}	
     }
 
-    // // Function to credit GTRON to a user's account
-    // function creditGTRON($user_id, $amount) {
-    //     // Add code here to update the user's GTRON balance in the database
-    // }
-
-    // // Function to check if a user has referred at least 10 people within 24 hours
-    // function checkReferralBonus($user_id) {
-    //     // Add code here to check the number of referrals made by the user within 24 hours
-    //     // If the count is at least 10, return true; otherwise, return false
-    // }
-
-    // // Register user and send referral email
-    // function registerUser($user_email, $referral_link) {
-    //     // Add code here to store user details in the database and send an email with the referral link
-    // }
-
-    // // Example usage
-    // $user_email = 'user@example.com';
-    // $referral_link = 'https://yourwebsite.com/register?ref=12345';
-
-    // // Register the user and send the referral email
-    // registerUser($user_email, $referral_link);
-
-    // // Referral logic (Assuming someone used the referral link and registered)
-    // $referrer_id = 12345;
-    // $new_user_id = 67890;
-    // $bonus_amount = 500;
-
-    // // Credit GTRON to referrer's account
-    // creditGTRON($referrer_id, $bonus_amount);
-
-    // // Credit GTRON to new user's account
-    // creditGTRON($new_user_id, $bonus_amount);
-
-    // // Check for referral bonus and credit if applicable
-    // if (checkReferralBonus($referrer_id)) {
-    //     $bonus_amount = 1000;
-    //     creditGTRON($referrer_id, $bonus_amount);
-    // }
-
 }
 
 ?>
