@@ -21,35 +21,35 @@ class GeneralHelper
     // This function is used to get the total number of users registered or active on a daily basis.
     public static function insert_pre_registration_form($db, $user_name, $email, $country, $contact_no, $message, $referrer_user_id) {
 		try {
-
         $referral_id = self::generate_referral_id(); 
 
         // Generate the referral link for the new user
         $referral_link = "https://yourwebsite.com/register?ref=" . $referral_id;
 
         // Set is_referred to 0 for new users (not referred by anyone)
-        $is_referred = 1;
+        $is_referred = 0;
 
         // Initialize referred_user_id as null for new users (no referrer)
         // $referred_user_id = null;
-        if(!isset($referred_user_id)) {
+        if(!isset($referred_user_id) && $referred_user_id == '') {
             $is_referred = 0;
-            $referred_user_id = null;
+            $referred_user_id = '';
         }
         else {
+            $is_referred = 1;
             // Prepare the SELECT query
             $sql1 = "SELECT * FROM pre_registration WHERE referrer_user_id = :referrer_user_id and registration_date >= NOW() - INTERVAL 1 DAY AND registration_date <= NOW()";
 
             // Prepare the statement
-            $stmt = $db->prepare($sql1);
+            $stmt1 = $db->prepare($sql1);
 
             // Bind the parameter to the prepared statement using bindValue
-            $stmt->bindValue(':referrer_user_id', $referrer_user_id, PDO::PARAM_STR);
+            $stmt1->bindValue(':referrer_user_id', $referrer_user_id, PDO::PARAM_STR);
 
-            $stmt->execute();
+            $stmt1->execute();
 
             // Fetch the first (and only) row as an associative array
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt1->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
                 // Process the data
@@ -60,42 +60,42 @@ class GeneralHelper
                 echo "No records found for the given referrer_user_id.";
             }
         }
+
             // Prepare the SQL INSERT query with placeholders
         $date = date('Y-m-d');
 
-        $sql2 = "INSERT INTO pre_registration (user_name, email, country, contact_no, message, referral_link, is_referred, referred_user_id,user_referral_id, reffered_user_count, gtron,  registration_date) 
-        VALUES (:user_name, :email, :country, :contact_no, :message, :referral_link, :is_referred, :referred_user_id, user_referral_id, reffered_user_count, :gtron, :currdate)";
-
+        $sql2 = "INSERT INTO pre_registration (user_name, email, country, contact_no, message, referral_link, is_referred, referrer_user_id, user_referral_id, reffered_user_count, gtron, registration_date) 
+        VALUES (:user_name, :email, :country, :contact_no, :message, :referral_link, :is_referred, :referrer_user_id, :user_referral_id, :referred_user_count, :gtron, :currdate)";
 
         // Prepare the statement
-        $stmt = $db->prepare($sql2);
+        $stmt2 = $db->prepare($sql2);
+
 
         // Set the initial GTRON balance to 500 for new users
         $gtron = 500;
 
         // Bind parameters to the prepared statement using bindValue
-        $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
-        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-        $stmt->bindValue(':country', $country, PDO::PARAM_STR);
-        $stmt->bindValue(':contact_no', $contact_no, PDO::PARAM_INT);
-        $stmt->bindValue(':message', $message, PDO::PARAM_STR);
-        $stmt->bindValue(':referral_link', $referral_link, PDO::PARAM_STR);
-        $stmt->bindValue(':is_referred', $is_referred, PDO::PARAM_INT);
-        $stmt->bindValue(':user_referral_id', $referral_id, PDO::PARAM_STR);
-        $stmt->bindValue(':referrer_user_id', $referrer_user_id, PDO::PARAM_STR);
-        $stmt->bindValue(':reffered_user_count', 0, PDO::PARAM_INT);
-        $stmt->bindValue(':gtron', $gtron, PDO::PARAM_INT);
-        $stmt->bindValue(':currdate', $date, PDO::PARAM_STR);
+        $stmt2->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+        $stmt2->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt2->bindValue(':country', $country, PDO::PARAM_STR);
+        $stmt2->bindValue(':contact_no', $contact_no, PDO::PARAM_INT);
+        $stmt2->bindValue(':message', $message, PDO::PARAM_STR);
+        $stmt2->bindValue(':referral_link', $referral_link, PDO::PARAM_STR);
+        $stmt2->bindValue(':is_referred', $is_referred, PDO::PARAM_INT);
+        $stmt2->bindValue(':referrer_user_id', $referrer_user_id, PDO::PARAM_STR);
+        $stmt2->bindValue(':user_referral_id', $referral_id, PDO::PARAM_STR);
+        $stmt2->bindValue(':referred_user_count', 0, PDO::PARAM_INT);
+        $stmt2->bindValue(':gtron', $gtron, PDO::PARAM_INT);
+        $stmt2->bindValue(':currdate', $date, PDO::PARAM_STR);
 
         // Execute the prepared statement
-        if ($stmt->execute()) {
-
-            if(isset($referrer_user_id)) {
+        if ($stmt2->execute()) {
+            if(isset($referrer_user_id) && $referrer_user_id != '') {
                 // Prepare the UPDATE query
-                $sql = "UPDATE pre_registration SET gtron = :new_gtron_value, reffered_user_count = :reffered_user_count WHERE referrer_user_id = :referrer_user_id";
+                $sql3 = "UPDATE pre_registration SET gtron = :new_gtron_value, reffered_user_count = :reffered_user_count WHERE referrer_user_id = :referrer_user_id";
 
                 // Prepare the statement
-                $stmt = $db->prepare($sql);
+                $stmt3 = $db->prepare($sql3);
 
                 if($reffered_user_count > 10) {
                     $new_gtron_value = $reffereGtronAmount + 1000;
@@ -106,15 +106,16 @@ class GeneralHelper
                 $reffered_user_count = $reffered_user_count + 1;
                 
                 // Bind the parameters to the prepared statement using bindValue
-                $stmt->bindValue(':new_gtron_value', $new_gtron_value, PDO::PARAM_INT);
-                $stmt->bindValue(':referrer_user_id', $referrer_user_id, PDO::PARAM_STR);
-                $stmt->bindValue(':reffered_user_count', $reffered_user_count, PDO::PARAM_STR);
+                $stmt3->bindValue(':new_gtron_value', $new_gtron_value, PDO::PARAM_INT);
+                $stmt3->bindValue(':referrer_user_id', $referrer_user_id, PDO::PARAM_STR);
+                $stmt3->bindValue(':reffered_user_count', $reffered_user_count, PDO::PARAM_STR);
 
                 // Execute the query
-                $stmt->execute();
+                $stmt3->execute();
             }
+
             // If the insert was successful, get the ID of the newly inserted row
-            $referred_user_id = $db->lastInsertId();
+            // $referred_user_id = $db->lastInsertId();
             $data['reffrelLink'] = $referral_link;
             $data['msg'] = 'success';
             return $data;
