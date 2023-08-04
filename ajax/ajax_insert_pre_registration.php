@@ -1,8 +1,8 @@
 <?php 
 
-error_reporting(E_ALL);
-error_reporting(-1);
-ini_set('error_reporting', E_ALL);
+// error_reporting(E_ALL);
+// error_reporting(-1);
+// ini_set('error_reporting', E_ALL);
 
 require_once('../core/config.php');
 require_once('../core/session.php');
@@ -12,10 +12,6 @@ require '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// require '../../member/phpmailer/src/Exception.php';
-// require '../../member/phpmailer/src/PHPMailer.php';
-// require '../../member/phpmailer/src/SMTP.php';
-// $mail = new PHPMailer(true);
 $db = getDB();    
 
 
@@ -66,94 +62,54 @@ $db = getDB();
     // echo $response;
     
     if($response['msg'] == 'success') {
-        $reffrelLink = $response['reffrelLink'];
-
-        // echo $reffrelLink;
-
-        exit();
-
+        $reffrelLink = $response['reffrelLink'];        
         // Create a new PHPMailer instance
-        // $mail = new PHPMailer;
+        $mail = new PHPMailer;
         
-        // // SMTP configuration (change these values with your own)
-        // $mail->isSMTP();
-        // $mail->Host = 'mail.gtron.io';
-        // $mail->SMTPAuth = true;
-        // $mail->Username = 'no-reply@gtron.io';
-        // $mail->Password = 'gTron@12@';
-        // $mail->SMTPSecure = 'ssl';
-        // $mail->Port = 465;
-        
-        // //gtorn2023@gmail.com
-        
-        // // Sender and recipient
-        // $mail->setFrom('no-reply@gtron.io', 'GTron');
-        // // $mail->addAddress('gtorn2023@gmail.com', 'GTron');
-        // $mail->addAddress('2015kshitij14@gmail.com', 'GTron');
-        
-        // // Email content
-        // $mail->isHTML(true);
-        // $mail->Subject = 'Form Submission';
-        // $mail->Body = "Name: $name<br>Email: $email<br>Country: $country<br>Phone: $countrycode $phone<br>Message: $message";
-        
+        // SMTP configuration (change these values with your own)
+        $mail->isSMTP();
+        $mail->Host = 'mail.gtron.io';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'no-reply@gtron.io';
+        $mail->Password = 'gTron@12@';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+
+        //gtorn2023@gmail.com
+
+        $email = '2015kshitij14@gmail.com';
+        // Sender and recipient
+        $mail->setFrom('no-reply@gtron.io', 'GTron');
+        $mail->addAddress($email, 'GTron');
+
+        // Email content
+        $mail->isHTML(true);
+        $mail->Subject = 'Form Submission';
+        $filename = '../resources/file.txt';
+        $content = file_get_contents($filename);
+        $content = str_replace("{{favIcon1}}", '', $content);
+        $content = str_replace("{{code}}", $reffrelLink, $content);
+        $email_template = $content;
+        $mail->Body = $email_template;
+
         // Send email
         if ($mail->send()) {
-            ?>
-            <script>Swal.fire({
-                icon: 'success',
-                title: 'Registered Successfully!',
-                text: 'Thank you for registering with Gtron! Congratulations, you have been awarded 50 Gtron tokens absolutely free',
-                confirmButtonText: 'OK'
-            })
-            </script>
-            <?php
+            echo "Successfully email sent!"
+        ?><script>Swal.fire({
+            icon: 'success',
+            title: 'Registered Successfully!',
+            text: 'Thank you for registering with Gtron! Congratulations, you have been awarded 500 Gtron tokens absolutely free',
+            confirmButtonText: 'OK'
+            })</script><?php
         } else {
-            ?><script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong! Please try again.',
-                confirmButtonText: 'OK'
-            })
-            </script><?php
+        ?><script>Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Please try again.',
+            confirmButtonText: 'OK'
+            })</script><?php
         }
 
-        
-        //... Rest of your code with OTP generation and email sending ...
-        // $subject = "Refferal link for GTRON Withdrawals";
-        // $filename = '../resources/file.txt';
-        // $content = file_get_contents($filename);
-        // $content = str_replace("{{favIcon1}}", '', $content);
-        // $content = str_replace("{{code}}", $reffrelLink, $content);
-        // $email_template = $content;
-        // $mail->isSMTP();
-        // $mail->Host = 'mail.eighty5technologies.com';
-        // $mail->Port = 465;
-        // $mail->SMTPAuth = true;
-        // $mail->Username = 'mailcheck@eighty5technologies.com';
-        // $mail->Password = 'Sb(QUZi5@t}';
-        // $mail->SMTPSecure = 'ssl';
-
-        // // Email content
-        // $mail->setFrom('mailcheck@eighty5technologies.com', 'GTRON');
-        // $mail->addAddress($to, $full_name);
-        // $mail->Subject = $subject;
-        // $mail->isHTML(true);
-        // $mail->Body = $email_template;
-
-        // if ($mail->send()) {
-        //     echo "Email Sent Successfully";
-        // } else {
-        //     echo "Email Not Sent";
-        // }
-
-
     }
-
-
-// $response = AdminHelper::getMonthlyAdminWalletSummaryLogs($db);
-
-
-// print_r(json_encode($response));
 
 ?>
