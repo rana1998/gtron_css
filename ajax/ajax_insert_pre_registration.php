@@ -16,27 +16,33 @@ $db = getDB();
 
 
 // Assuming the POST method is used to submit the form and the field names are as follows:
-    $user_name = "John Doe";
-    $email = "john.doe@example.com";
-    $country = "United States";
-    $contact_no = "1234567890";
-    $message = "Hello, I'm interested in your service!";
-    $referrer_user_id="";
+    // $user_name = "John Doe";
+    // $email = "john.doe@example.com";
+    // $country = "United States";
+    // $contact_no = "1234567890";
+    // $message = "Hello, I'm interested in your service!";
+    // $referrer_user_id="";
 
-    // $user_name = $_POST["user_name"];
-    // $email = $_POST["email"];
-    // $country = $_POST["country"];
-    // $contact_no = $_POST["contact_no"];
-    // $message = $_POST["message"];
-    // $referrer_user_id = $_POST["referrer_user_id"];
+    $user_name = $_POST["name"];
+    $email = $_POST["email"];
+    $country = $_POST["country"];
+    // $contact_no = $_POST["countrycode"];
+    // $contact_no = $_POST["phone"];
+    $countryCode = $_POST["countrycode"];
+    $phoneNumber = $_POST["phone"];
+
+    // Concatenate the country code and phone number
+    $contact_no = $countryCode . $phoneNumber;
+    $message = $_POST["message"];
+    $referrer_user_id = $_POST["referrer_user_id"];
     
     // Assuming you have the database connection object stored in $db
 
     // Validate Full Name: Must not be empty and can contain only letters, spaces, and dashes
-    if (empty($user_name) || !preg_match("/^[a-zA-Z\- ]+$/", $user_name)) {
-        echo "Error: Please enter a valid full name.";
-        return;
-    }
+    // if (empty($user_name) || !preg_match("/^[a-zA-Z\- ]+$/", $user_name)) {
+    //     echo "Error: Please enter a valid full name.";
+    //     return;
+    // }
 
     // Validate Email Address: Must be a valid email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -51,10 +57,10 @@ $db = getDB();
     }
 
     // Validate Contact Number: Must not be empty and can contain only digits and optional plus sign at the beginning
-    if (empty($contact_no) || !preg_match("/^\+?[0-9]+$/", $contact_no)) {
-        echo "Error: Please enter a valid contact number.";
-        return;
-    }
+    // if (empty($contact_no) || !preg_match("/^\+?[0-9]+$/", $contact_no)) {
+    //     echo "Error: Please enter a valid contact number.";
+    //     return;
+    // }
     
     // Call the insert_pre_registration_form method
     $response = GeneralHelper::insert_pre_registration_form($db, $user_name, $email, $country, $contact_no, $message, $referrer_user_id);
@@ -94,20 +100,32 @@ $db = getDB();
 
         // Send email
         if ($mail->send()) {
-            echo "Successfully email sent!"
-        ?><script>Swal.fire({
-            icon: 'success',
-            title: 'Registered Successfully!',
-            text: 'Thank you for registering with Gtron! Congratulations, you have been awarded 500 Gtron tokens absolutely free',
-            confirmButtonText: 'OK'
-            })</script><?php
+            // Create the data as an associative array
+            $response = array(
+                "status" => "success",
+                "message" => "Successfully email sent!"
+            );
+
+            // Set the Content-Type header to specify JSON format
+            header('Content-Type: application/json');
+
+            // Send the JSON response
+            echo json_encode($response);
+            // echo "Successfully email sent!"
+        ?><?php
         } else {
-        ?><script>Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong! Please try again.',
-            confirmButtonText: 'OK'
-            })</script><?php
+        
+            // Create the data as an associative array
+            $response = array(
+                "status" => "ERROR",
+                "message" => "OOPS Something wet wrong!"
+            );
+
+            // Set the Content-Type header to specify JSON format
+            header('Content-Type: application/json');
+
+            // Send the JSON response
+            echo json_encode($response);
         }
 
     }

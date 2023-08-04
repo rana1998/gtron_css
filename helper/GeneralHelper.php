@@ -78,7 +78,7 @@ class GeneralHelper
         $stmt2->bindValue(':user_name', $user_name, PDO::PARAM_STR);
         $stmt2->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt2->bindValue(':country', $country, PDO::PARAM_STR);
-        $stmt2->bindValue(':contact_no', $contact_no, PDO::PARAM_INT);
+        $stmt2->bindValue(':contact_no', $contact_no, PDO::PARAM_STR);
         $stmt2->bindValue(':message', $message, PDO::PARAM_STR);
         $stmt2->bindValue(':referral_link', $referral_link, PDO::PARAM_STR);
         $stmt2->bindValue(':is_referred', $is_referred, PDO::PARAM_INT);

@@ -3,6 +3,15 @@ require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+if (isset($_GET['ref'])) {
+    $referralCode = $_GET['ref'];
+    // Now you can use the $referralCode variable for further processing or storing in the database.
+    // For example, you can insert it into the database when a user registers using this referral code.
+} else {
+    // If the "ref" parameter is not present in the URL, you can set a default value or handle it accordingly.
+    $referralCode = '';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -189,7 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 
 						</style>
-				<form action="" method="post">
+				<form id="registrationForm" action="" method="post">
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<input type="text" name="name" class="form-control" placeholder="Your Name" required>
@@ -453,6 +462,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<div class="phone-input">
 							  <input class="form-control countrycode" placeholder="+91" name="countrycode" type="text" id="countrycode" disabled/>
 							  <input class="form-control phone" placeholder="Phone Number" name="phone" type="text" id="phone" required />
+							  <input class="form-control phone" placeholder="referrer_user_id" value="<?php echo $referralCode; ?>" name="referrer_user_id" type="hidden" id="referrer_user_id" required />
+
 							</div>
 						  </div>
 						
@@ -760,6 +771,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		  // Set the corresponding country code in the input field
 		  countrycodeInput.value = countryCodes[selectedCountry] || "";
 		});
+
+
+		// Function to handle form submission
+		function submitForm(event) {
+			event.preventDefault(); // Prevent form submission from reloading the page
+
+			// Get form data
+			// const form = event.target;
+			// Get form data
+			const form = document.querySelector('#registrationForm'); // Target the form element
+        	const formData = new FormData(form);
+			// const formData = new FormData(form);
+
+			// Make AJAX request
+			fetch('ajax/ajax_insert_pre_registration.php', {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				// Parse the JSON response
+				// var data = JSON.parse(res);
+
+				// Check the status and handle the message
+				if (data.status === "success") {
+				// Display the success message
+				console.log(data.message);
+				} else {
+				// Handle other status or error cases
+				}
+				// Handle the response data here
+				// console.log(data);
+				// For example, display a success message or show any errors returned from the server
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		}
+
+		// Add event listener to the form submit button
+		const submitButton = document.querySelector('#registrationForm .btn-submit');
+		submitButton.addEventListener('click', submitForm);
 	  </script>
 	 
 </body>
