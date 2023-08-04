@@ -1,0 +1,1 @@
+!function(e){"use strict";e(window);e(".typed-title").typed({stringsElement:e(".typing-title"),backDelay:2e3,typeSpeed:60,loop:!0})}(jQuery);

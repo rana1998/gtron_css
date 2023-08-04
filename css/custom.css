@@ -1,0 +1,362 @@
+/*
+	Template Name 	: Olivia - Coming soon HTML Template with Countdown
+	Author 			: Awaiken Theme
+	Author Url 		: https://awaikenthemes.com
+*/
+
+html{
+	height: 100%;
+}
+
+body{
+	font-size: 16px;
+	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	margin:0;
+	font-weight: 700;
+}
+
+img{
+	max-width: 100%;
+}
+
+a:hover{
+	text-decoration: none;
+	outline: 0;
+}
+
+a:focus{
+	text-decoration: none;
+	outline: 0;
+}
+
+
+.comming-soon{
+	background: url(../images/bg.png) no-repeat;
+    background-size: contain;
+    width: 100%;
+    position: relative;
+    min-height: 100%;
+}
+
+.comming-soon:before{
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.85);
+}
+
+.countdown-timer-wrapper{
+	text-align: center;
+}
+
+.timer .timer-wrapper{
+	display: inline-block;
+	width: 126px;
+	margin: 0;
+	text-align: center;
+	vertical-align: top;
+}
+
+img.logomain {
+	width: 200px;
+}
+
+.timer .timer-wrapper .time{
+	font-size: 46px;
+	color: #fff;
+	font-weight: 700;
+	line-height: 1em;
+}
+
+.timer .timer-wrapper .text{
+	color: #fff;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.comming-soon-info{
+	width: 50%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+}
+
+.comming-soon-inner{
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+}
+
+.comming-soon-inner .logo{
+	margin: 60px 0;
+}
+
+.site-info h1{
+	text-transform: uppercase;
+	letter-spacing: 0.16em;
+	color: #fff;
+	font-size: 40px;
+	font-weight: 300;
+	line-height: 1.5em;
+}
+
+.site-info h1 span{
+	color: #cbaffb!important;
+	display: block;
+	font-weight: 700;
+}
+
+.site-info p{
+	margin-top: 40px;
+	line-height: 1.8em;
+	color: #fff;
+	font-weight: 500;
+}
+
+.contact-form{
+	width: 50%;
+	/*background: linear-gradient(53deg,#e02856,#e53b4d,#eb4d44);*/
+	background: linear-gradient(53deg,#1f0c3f,#28134c,#341f5a);
+	position: absolute;
+	top: 0;
+	left: 50%;
+	bottom: 0;
+	z-index: 2;
+	padding: 40px;
+	display: flex;
+	align-items: center;
+}
+
+.contact-box{
+	width: 100%;
+	max-width: 560px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.title{
+	text-transform: uppercase;
+	font-size: 34px;
+	color: #fff;
+	padding-bottom: 20px;
+	background: url(../images/title-bg.png) no-repeat bottom center;
+	margin-bottom: 40px;
+}
+
+.contact-box p{
+	color: #e1cfff!important;
+    font-size:16px;
+	font-weight: 600;
+}
+
+.rainbow-text{ 
+  
+	color: hsl(
+	  calc(360deg * var(--char-percent)
+	  ), 
+	  90%, 
+	  65%
+	);
+   
+  }
+  
+  .rainbow-text.animated{
+      
+      font-weight: 800!important;
+    font-size: 18px!important;
+	animation: rainbow-colors 2s linear infinite;
+	animation-delay: calc(-2s * var(--char-percent));
+  }
+  /* Unfortunately, browsers try to take the shortest distance between transition/animation properties, so a simple `0turn` to `1turn` doesn't get the proper effect. */
+  @keyframes rainbow-colors {
+	0% { color: hsl(0turn, 90%, 65%); }
+	25% { color: hsl(.25turn, 90%, 65%); }
+	50% { color: hsl(.5turn, 90%, 65%); }
+	75% { color: hsl(.75turn, 90%, 65%); }
+	100% { color: hsl(1turn, 90%, 65%); }
+  }
+  
+  .shine {
+	background: #a27be7 -webkit-gradient(linear, left top, right top, from(#a27be7), to(#a27be7), color-stop(0.5, #fff)) 0 0 no-repeat;
+	-webkit-background-size: 150px;
+	color: rgba(255, 255, 255, 0.3);
+	-webkit-background-clip: text;
+	-webkit-animation-name: shine;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: infinite;
+	text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
+  }
+  
+  .chrome {
+	background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+	background-image: -webkit-linear-gradient(-40deg, transparent 0%, transparent 40%, #fff 50%, transparent 60%, transparent 100%);
+	-webkit-background-size: 200px;
+	color: rgba(255, 255, 255, 0.3);
+	-webkit-background-clip: text;
+	-webkit-animation-name: shine;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: infinite;
+	text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5);
+  }
+  
+  @-webkit-keyframes shine {
+	0%, 10% {
+	  background-position: -1000px;
+	}
+	20% {
+	  background-position: top left;
+	}
+	90% {
+	  background-position: top right;
+	}
+	100% {
+	  background-position: 1000px;
+	}
+  }
+
+.contact-box form{
+	margin-top: 50px;
+}
+.contact-box .form-control{
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	background: rgba(255,255,255,0.10);
+	color: #fff;
+	height: auto;
+	padding: 14px;
+	margin-bottom: 30px;
+	resize: none;
+}
+
+.contact-box .form-control::-webkit-input-placeholder{
+	color: #fff;
+}
+
+.contact-box .form-control:-moz-placeholder{
+	color: #fff;
+}
+
+.contact-box .form-control::-moz-placeholder{
+	color: #fff;
+}
+
+.contact-box .form-control:-ms-input-placeholder{
+	color: #fff;
+}
+
+.btn-submit{
+	background: #fff;
+	text-transform: uppercase;
+	color: #160d28;
+	font-weight: 500;
+	border: none;
+	padding: 14px 30px 12px;
+	transition: all 0.4s;
+}
+
+.btn-submit:hover{
+	background: #341f5a;
+	color: #fff;
+}
+
+/****************************************
+		Responsive Media Query
+****************************************/
+
+@media only screen and (max-width:1024px){
+	.comming-soon-info{
+		float: none;
+		position:relative;
+		width: 100%;
+		height: auto;
+		padding: 100px 30px;
+	}
+	
+	.contact-form{
+		float: none;
+		position:relative;
+		width: 100%;
+		left: 0;
+		height: auto;
+		padding: 100px 30px;
+	}
+}
+
+@media only screen and (max-width:768px){
+	
+}
+
+@media only screen and (max-width:480px){
+
+	.comming-soon {
+		background-position: center calc(12% + 20px);
+		
+	}
+
+	img.logomain {
+		width: 200px;
+	}
+	
+	.comming-soon-info{
+		padding: 40px 20px;
+	}
+	
+	.contact-form{
+		padding: 40px 20px;
+	}
+	
+	.comming-soon-inner{
+		padding: 0;
+	}
+	
+	.timer .timer-wrapper{
+		width: 70px;
+	}
+	
+	.timer .timer-wrapper .time{
+		font-size: 26px;
+	}
+
+	.timer .timer-wrapper .text{
+		font-size: 12px;
+	}
+	
+	.site-info h1{
+		font-size: 20px;
+	}
+	
+	.title{
+		font-size: 22px;
+	}
+	
+	.site-info p{
+		font-size: 14px;
+	}
+	
+	.contact-box p{
+		color: #e1cfff!important;
+		font-size: 16px;
+	}
+
+	.site-info p br{
+		display: none;
+	}
+	
+}

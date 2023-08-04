@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# Redirect to www
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# Custom error page for 404 errors
+ErrorDocument 404 /index.php
