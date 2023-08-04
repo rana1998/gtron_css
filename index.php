@@ -797,8 +797,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				// Check the status and handle the message
 				if (data.status === "success") {
 				// Display the success message
+				//pop thank you
+				Swal.fire({
+					icon: 'success',
+					title: 'Registered Successfully!',
+					text: 'Thank you for registering with Gtron! Congratulations, you have been awarded 50 Gtron tokens absolutely free',
+					confirmButtonText: 'OK'
+				})
 				console.log(data.message);
 				} else {
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: 'Something went wrong! Please try again.',
+						confirmButtonText: 'OK'
+					})
 				// Handle other status or error cases
 				}
 				// Handle the response data here

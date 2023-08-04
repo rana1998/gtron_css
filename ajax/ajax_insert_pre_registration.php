@@ -83,7 +83,7 @@ $db = getDB();
 
         //gtorn2023@gmail.com
 
-        $email = '2015kshitij14@gmail.com';
+        // $email = '2015kshitij14@gmail.com';
         // Sender and recipient
         $mail->setFrom('no-reply@gtron.io', 'GTron');
         $mail->addAddress($email, 'GTron');

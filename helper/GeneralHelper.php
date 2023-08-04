@@ -24,7 +24,7 @@ class GeneralHelper
         $referral_id = self::generate_referral_id(); 
 
         // Generate the referral link for the new user
-        $referral_link = "https://yourwebsite.com/register?ref=" . $referral_id;
+        $referral_link = "https://gtron.io?ref=" . $referral_id;
 
         // Set is_referred to 0 for new users (not referred by anyone)
         $is_referred = 0;
