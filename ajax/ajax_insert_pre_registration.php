@@ -90,11 +90,12 @@ $db = getDB();
 
         // Email content
         $mail->isHTML(true);
-        $mail->Subject = 'Form Submission';
+        $mail->Subject = 'Thank You for registering on Gtron.';
         $filename = '../resources/file.txt';
         $content = file_get_contents($filename);
         $content = str_replace("{{favIcon1}}", '', $content);
         $content = str_replace("{{code}}", $reffrelLink, $content);
+        $content = str_replace("{{name}}", $user_name, $content);
         $email_template = $content;
         $mail->Body = $email_template;
 
@@ -120,7 +121,7 @@ $db = getDB();
 
                 // Email content
                 $mail->isHTML(true);
-                $mail->Subject = 'Form Submission';
+                $mail->Subject = 'New referral has joined through your Link - Gtron.';
                 // $filename = '../resources/file.txt';
                 // $content = file_get_contents($filename);
                 // $content = str_replace("{{favIcon1}}", '', $content);

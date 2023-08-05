@@ -472,11 +472,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 						
 						<div class="col-md-12 col-sm-12">
-							<input type="submit" name="submit" class="btn-submit" value="Submit">
+						<label style="color: #fff;">
+						 <!-- Replace the Telegram link URL with your actual Telegram group/channel link -->
+							<a href="https://t.me/gtron_official" onclick = "clickMe()" target="_blank" id="telegramLink">
+								Join our Telegram channel to continue with registration
+							</a>
+							
+
+							<!-- <input type="checkbox" id="telegramCheckbox" name="telegram_checkbox"> -->
+							
+							 <!-- Join our Telegram channel to continue with registration -->
+						</label>
+						<br>
+						<input type="submit" id="submitButton" name="submit" class="btn-submit" value="Submit" disabled>
+						<!-- <input type="submit" name="submit" class="btn-submit" value="Submit"> -->
 						</div>
 					</div>
 					
 				</form>
+				<!-- Message div for empty username -->
+				<div class="alert alert-danger" style="display:none;margin-top:10px" id="emptyUsernameMsg">
+					Please enter a username.
+				</div>
+
 			</p></div>
 		</div>
 		<!-- Contact Form end -->
@@ -773,8 +791,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		});
 
 
+		// Enable the submit button when the Telegram link is clicked
+		var telegramClicked = false; // To track if the Telegram link has been clicked
+		function clickMe() {
+			const submitButton = document.querySelector('#registrationForm .btn-submit');
+			telegramClicked = true;
+			submitButton.disabled = false;
+		}
 		// Function to handle form submission
 		function submitForm(event) {
+			// Prevent form submission from reloading the page if the Telegram link is not clicked
+            if (!telegramClicked) {
+                alert('Please click the Telegram link to continue with registration.');
+				return;
+            }
 			event.preventDefault(); // Prevent form submission from reloading the page
 
 			// Get form data
@@ -783,6 +813,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			const form = document.querySelector('#registrationForm'); // Target the form element
         	const formData = new FormData(form);
 			// const formData = new FormData(form);
+
+			// Get the values of the specific fields from the FormData object
+            const nameValue = formData.get('name');
+            const emailValue = formData.get('email');
+            const countryValue = formData.get('country');
+            const phoneValue = formData.get('phone');
+
+            // Perform validation
+            if (nameValue.trim() === '') {
+				$("#emptyUsernameMsg").css("display", "block").text("Please enter your name.");
+                return; // Stop further processing if the name is empty
+            }
+
+            if (emailValue.trim() === '') {
+				$("#emptyUsernameMsg").css("display", "block").text("Please enter your email.");
+                return; // Stop further processing if the email is empty
+            }
+
+            if (countryValue.trim() === '') {
+				$("#emptyUsernameMsg").css("display", "block").text("Please enter your country.");
+                return; // Stop further processing if the email is empty
+            }
+
+            if (phoneValue.trim() === '') {
+				$("#emptyUsernameMsg").css("display", "block").text("Please enter your phone number.");
+                return; // Stop further processing if the email is empty
+            }
+
+			// $("#emptyUsernameMsg").css("display", "block").removeClass("alert-danger").addClass("alert-success").text("All required fields are filled. please submit the form");
+			$("#emptyUsernameMsg").css("display", "none");
 
 			// Make AJAX request
 			fetch('ajax/ajax_insert_pre_registration.php', {
