@@ -30,12 +30,14 @@ class GeneralHelper
         $is_referred = 0;
 
         // Initialize referred_user_id as null for new users (no referrer)
-        // $referred_user_id = null;
-        if(!isset($referred_user_id) && $referred_user_id == '') {
+       
+
+        if(!isset($referrer_user_id) && $referrer_user_id == '') {
             $is_referred = 0;
-            $referred_user_id = '';
+            $referrer_user_id = '';
         }
         else {
+            
             $is_referred = 1;
             // Prepare the SELECT query
             $sql1 = "SELECT * FROM pre_registration WHERE user_referral_id = :referrer_user_id and registration_date >= NOW() - INTERVAL 1 DAY AND registration_date <= NOW()";
