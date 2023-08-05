@@ -798,12 +798,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				if (data.status === "success") {
 				// Display the success message
 				//pop thank you
-				Swal.fire({
+				if(data && data.referrer_user_id) {
+					Swal.fire({
+					icon: 'success',
+					title: 'Registered Successfully!',
+					text: `Thank you for Registering on Gtron through Referal ID - ${data.referrer_user_id}. You have been successfully awarded 500 Gtron Token. You can claim this Token as soon as Our Website is Live.`,
+					confirmButtonText: 'OK'
+				})
+				} else {
+					Swal.fire({
 					icon: 'success',
 					title: 'Registered Successfully!',
 					text: 'Thank you for registering with Gtron! Congratulations, you have been awarded 50 Gtron tokens absolutely free',
 					confirmButtonText: 'OK'
 				})
+				}
+				
 				console.log(data.message);
 				} else {
 					Swal.fire({

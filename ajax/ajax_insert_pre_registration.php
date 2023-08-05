@@ -102,6 +102,7 @@ $db = getDB();
         if ($mail->send()) {
             // Create the data as an associative array
             $response = array(
+                "refferer_user_id" => $referrer_user_id,
                 "status" => "success",
                 "message" => "Successfully email sent!"
             );

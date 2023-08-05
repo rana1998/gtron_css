@@ -38,7 +38,7 @@ class GeneralHelper
         else {
             $is_referred = 1;
             // Prepare the SELECT query
-            $sql1 = "SELECT * FROM pre_registration WHERE referrer_user_id = :referrer_user_id and registration_date >= NOW() - INTERVAL 1 DAY AND registration_date <= NOW()";
+            $sql1 = "SELECT * FROM pre_registration WHERE user_referral_id = :referrer_user_id and registration_date >= NOW() - INTERVAL 1 DAY AND registration_date <= NOW()";
 
             // Prepare the statement
             $stmt1 = $db->prepare($sql1);
@@ -53,7 +53,7 @@ class GeneralHelper
 
             if ($result) {
                 // Process the data
-                $reffereGtronAmount =  $result['gtron'];
+                $reffereGtronAmount =  (int)$result['gtron'];
                 $reffered_user_count =  (int)$result['$reffered_user_count'];
                 // ... Access other fields as needed ...
             } else {
@@ -92,7 +92,7 @@ class GeneralHelper
         if ($stmt2->execute()) {
             if(isset($referrer_user_id) && $referrer_user_id != '') {
                 // Prepare the UPDATE query
-                $sql3 = "UPDATE pre_registration SET gtron = :new_gtron_value, reffered_user_count = :reffered_user_count WHERE referrer_user_id = :referrer_user_id";
+                $sql3 = "UPDATE pre_registration SET gtron = :new_gtron_value, reffered_user_count = :reffered_user_count WHERE user_referral_id = :referrer_user_id";
 
                 // Prepare the statement
                 $stmt3 = $db->prepare($sql3);
