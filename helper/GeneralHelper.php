@@ -21,13 +21,31 @@ class GeneralHelper
     // This function is used to get the total number of users registered or active on a daily basis.
     public static function insert_pre_registration_form($db, $user_name, $email, $country, $contact_no, $message, $referrer_user_id) {
 		try {
-        $referral_id = self::generate_referral_id(); 
 
-        // Generate the referral link for the new user
-        $referral_link = "https://gtron.io?ref=" . $referral_id;
+            // Check if a user with the same email and phone number already exists
+            $sql = "SELECT * FROM pre_registration WHERE email = :email OR contact_no = :contact_no";
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':contact_no', $contact_no, PDO::PARAM_STR);
+            $stmt->execute();
 
-        // Set is_referred to 0 for new users (not referred by anyone)
-        $is_referred = 0;
+            // Fetch the user data (if any)
+            $userExists = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($userExists) {
+                // Handle the case where a user with the same email or phone number already exists
+                $data['msg'] = 'userAlreadyExists';
+                return $data;
+                exit();
+            }
+
+            $referral_id = self::generate_referral_id(); 
+
+            // Generate the referral link for the new user
+            $referral_link = "https://gtron.io?ref=" . $referral_id;
+
+            // Set is_referred to 0 for new users (not referred by anyone)
+            $is_referred = 0;
 
         // Initialize referred_user_id as null for new users (no referrer)
        
@@ -56,12 +74,13 @@ class GeneralHelper
             if ($result) {
                 // Process the data
                 $reffereGtronAmount =  (int)$result['gtron'];
-                $reffered_user_count =  (int)$result['$reffered_user_count'];
+                $reffered_user_count =  (int)$result['reffered_user_count'];
+                $refferer_user_mail = $result['email'];
                 // ... Access other fields as needed ...
-            } else {
-                echo "No records found for the given referrer_user_id.";
-            }
+            } 
         }
+
+
 
             // Prepare the SQL INSERT query with placeholders
         $date = date('Y-m-d');
@@ -105,7 +124,7 @@ class GeneralHelper
                     $new_gtron_value = $reffereGtronAmount + 500;
                 }
 
-                $reffered_user_count = $reffered_user_count + 1;
+                $reffered_user_count = (int)$reffered_user_count + 1;
                 
                 // Bind the parameters to the prepared statement using bindValue
                 $stmt3->bindValue(':new_gtron_value', $new_gtron_value, PDO::PARAM_INT);
@@ -118,6 +137,7 @@ class GeneralHelper
 
             // If the insert was successful, get the ID of the newly inserted row
             // $referred_user_id = $db->lastInsertId();
+            $data['refferer_user_mail'] = $refferer_user_mail;
             $data['reffrelLink'] = $referral_link;
             $data['msg'] = 'success';
             return $data;

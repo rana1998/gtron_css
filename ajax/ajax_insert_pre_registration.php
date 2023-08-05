@@ -100,6 +100,38 @@ $db = getDB();
 
         // Send email
         if ($mail->send()) {
+
+            if($response['refferer_user_mail'] !== '') {
+                $refferer_user_mail = $response['refferer_user_mail'];
+                 // Create a new PHPMailer instance
+                $mail = new PHPMailer;
+                
+                // SMTP configuration (change these values with your own)
+                $mail->isSMTP();
+                $mail->Host = 'mail.gtron.io';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'no-reply@gtron.io';
+                $mail->Password = 'gTron@12@';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+
+                $mail->setFrom('no-reply@gtron.io', 'GTron');
+                $mail->addAddress($refferer_user_mail, 'GTron');
+
+                // Email content
+                $mail->isHTML(true);
+                $mail->Subject = 'Form Submission';
+                // $filename = '../resources/file.txt';
+                // $content = file_get_contents($filename);
+                // $content = str_replace("{{favIcon1}}", '', $content);
+                // $content = str_replace("{{code}}", $reffrelLink, $content);
+                // $email_template = $content;
+
+                $mail->Body = $user_name. " has joined through your link and you have  got 500 gtron";
+                $mail->send();
+            }
+           
+
             // Create the data as an associative array
             $response = array(
                 "refferer_user_id" => $referrer_user_id,
@@ -113,7 +145,7 @@ $db = getDB();
             // Send the JSON response
             echo json_encode($response);
             // echo "Successfully email sent!"
-        ?><?php
+        
         } else {
         
             // Create the data as an associative array
@@ -129,6 +161,32 @@ $db = getDB();
             echo json_encode($response);
         }
 
+    } elseif($response['msg'] == 'userAlreadyExists') {
+        # code...
+         // Create the data as an associative array
+         $response = array(
+            "status" => "userAlreadyExists",
+            "message" => "A user with the same email or phone number already exists."
+        );
+
+        // Set the Content-Type header to specify JSON format
+        header('Content-Type: application/json');
+
+        // Send the JSON response
+        echo json_encode($response);
+    } else {
+        
+        // Create the data as an associative array
+        $response = array(
+            "status" => "ERROR",
+            "message" => "OOPS Something wet wrong!"
+        );
+
+        // Set the Content-Type header to specify JSON format
+        header('Content-Type: application/json');
+
+        // Send the JSON response
+        echo json_encode($response);
     }
 
 ?>

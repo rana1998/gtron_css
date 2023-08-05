@@ -796,26 +796,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				// Check the status and handle the message
 				if (data.status === "success") {
-				// Display the success message
-				//pop thank you
-				if(data && data.referrer_user_id) {
+					// Display the success message
+					//pop thank you
+					if(data && data.referrer_user_id) {
+						Swal.fire({
+							icon: 'success',
+							title: 'Registered Successfully!',
+							text: `Thank you for Registering on Gtron through Referal ID - ${data.referrer_user_id}. You have been successfully awarded 500 Gtron Token. You can claim this Token as soon as Our Website is Live.`,
+							confirmButtonText: 'OK'
+						})
+					} else {
+							Swal.fire({
+							icon: 'success',
+							title: 'Registered Successfully!',
+							text: 'Thank you for registering with Gtron! Congratulations, you have been awarded 500 Gtron tokens absolutely free',
+							confirmButtonText: 'OK'
+						})
+					}
+				} 
+				else if (data.status === "userAlreadyExists") {
 					Swal.fire({
-					icon: 'success',
-					title: 'Registered Successfully!',
-					text: `Thank you for Registering on Gtron through Referal ID - ${data.referrer_user_id}. You have been successfully awarded 500 Gtron Token. You can claim this Token as soon as Our Website is Live.`,
-					confirmButtonText: 'OK'
-				})
-				} else {
-					Swal.fire({
-					icon: 'success',
-					title: 'Registered Successfully!',
-					text: 'Thank you for registering with Gtron! Congratulations, you have been awarded 50 Gtron tokens absolutely free',
-					confirmButtonText: 'OK'
-				})
-				}
-				
-				console.log(data.message);
-				} else {
+						icon: 'error',
+						title: 'Oops...',
+						text: `${data.message}`,
+						confirmButtonText: 'OK'
+					})
+				} 
+				else {
 					Swal.fire({
 						icon: 'error',
 						title: 'Oops...',
