@@ -1,5 +1,4 @@
 <?php
-// Assuming you have a database connection established and the pre_registration table structure.
 require_once('../core/config.php');
 // require_once('../core/session.php');
 // require_once('../helper/GeneralHelper.php');

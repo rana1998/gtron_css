@@ -167,7 +167,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						DECENTRALIZED MLM ECOSYSTEM</span></h1>
 					<p>We're coming soon! Why wait? Simply register now
 						using the form on the right side <br> with the required
-						details, and get 50 Gtron tokens for free. Stay tuned for
+						details, and get 500 Gtron tokens for free. Stay tuned for
 						more updates.</p>
 				</div>
 			</div>
@@ -177,8 +177,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="contact-form">
 			<div class="contact-box">
 				<h2 class="title">Register Now</h2>
-				<p>Register now on Gtron and receive <span class="rainbow-text animated">50 Gtron </span>tokens
-					absolutely free!</p><p>
+				<p>Register now on Gtron and receive <span class="rainbow-text animated">500 Gtron </span>tokens
+					absolutely free!</p>
+					<p>Reffferal 10 people in <span class="rainbow-text animated">24 hours and Get 1000 Gtron  </span> Bonus extra.</P>
+
 						<style>
 							/* Adjust the width of the select and input elements to fit them in one line */
 							.phone-input {
@@ -475,13 +477,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<label style="color: #fff;">
 						 <!-- Replace the Telegram link URL with your actual Telegram group/channel link -->
 							<a href="https://t.me/gtron_official" onclick = "clickMe()" target="_blank" id="telegramLink">
-								Join our Telegram channel to continue with registration
+								Click here to join our telegram group to continue regsitration
 							</a>
 							
-
-							<!-- <input type="checkbox" id="telegramCheckbox" name="telegram_checkbox"> -->
-							
-							 <!-- Join our Telegram channel to continue with registration -->
 						</label>
 						<br>
 						<input type="submit" id="submitButton" name="submit" class="btn-submit" value="Submit" disabled>
