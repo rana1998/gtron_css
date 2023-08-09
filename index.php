@@ -522,6 +522,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script>
         $(document).ready(function (){
 			//var myDate = new Date("08/04/2019");
+			// var myDate = new Date("08/18/2023");
 			var myDate = new Date("9/10/2023");
 			myDate.setDate(myDate.getDate() + 2);
             $("#countdown").countdown(myDate, function (event) {
