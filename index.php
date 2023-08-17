@@ -492,7 +492,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							
 						</label>
 						<br>
-						<input type="submit" id="submitButton" name="submit" class="btn-submit" value="Submit" disabled>
+						<!-- <input type="submit" id="submitButton" name="submit" class="btn-submit" value="Submit" disabled> -->
+						<input type="submit" id="submitButton" name="submit" class="btn-submit" value="Submit" >
 						<!-- <input type="submit" name="submit" class="btn-submit" value="Submit"> -->
 						</div>
 					</div>
@@ -803,16 +804,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		// Enable the submit button when the Telegram link is clicked
 		var telegramClicked = false; // To track if the Telegram link has been clicked
 		function clickMe() {
-			const submitButton = document.querySelector('#registrationForm .btn-submit');
+			// const submitButton = document.querySelector('#registrationForm .btn-submit');
 			telegramClicked = true;
-			submitButton.disabled = false;
+			// submitButton.disabled = false;
 		}
 		// Function to handle form submission
 		function submitForm(event) {
 			// Prevent form submission from reloading the page if the Telegram link is not clicked
-            if (!telegramClicked) {
-                alert('Please click the Telegram link to continue with registration.');
-				return;
+            if (telegramClicked == false) {
+				$("#emptyUsernameMsg").css("display", "block").text("Please click the Telegram link to continue with registration.'");
+                return; // Stop further processing if the name is empty
             }
 			event.preventDefault(); // Prevent form submission from reloading the page
 
@@ -836,6 +837,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				$("#emptyUsernameMsg").css("display", "block").text("Please enter your name.");
                 return; // Stop further processing if the name is empty
             }
+
+			// Define a regular expression pattern to match only letters
+			const namePattern = /^[a-zA-Z\s]*$/;
+			// Check if the input contains only letters
+			if (!namePattern.test(nameValue)) {
+				$("#emptyUsernameMsg").css("display", "block").text("Name should not be alphanumeric.");
+				return; // Stop further processing if the name is empty
+			} 
+			
 
 			if (isValidInput(nameValue) == false || isValidInput(countryValue) == false) {
 				$("#emptyUsernameMsg").css("display", "block").text("Invalid input! Please enter valid text.");
