@@ -41,7 +41,7 @@
 <body>
   <h1>Terms and Conditions</h1>
   
-  <h2>First Bonus</h2>
+  <!-- <h2>First Bonus</h2>
   <p>
     - Those who complete a minimum of 5 members in the first level and 25 members in the second level will get 100 USDT.<br>
     - Those who complete a minimum of 125 members in the third level will get an additional 200 USDT.
@@ -57,6 +57,6 @@
 
   <footer>
     &copy; [M GtronTM] - All rights reserved.
-  </footer>
+  </footer> -->
 </body>
 </html>

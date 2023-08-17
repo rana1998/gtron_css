@@ -187,9 +187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h2 class="title">Register Now</h2>
 				<p>Register now on Gtron and receive <span class="rainbow-text animated">500 Gtron </span>tokens
 					absolutely free!</p>
-
-					<!-- <p>Reffferal 10 people in <span class="rainbow-text animated">24 hours and Get 1000 Gtron  </span> Bonus extra.</P> -->
-					<p>Invite 10 people within <span class="rainbow-text animated"> 24 hours </span>, and you will get an additional <span class="rainbow-text animated">1000 Gtron </span> as an extra bonus.</P>
+					<p>Reffferal 10 people in <span class="rainbow-text animated">24 hours and Get 1000 Gtron  </span> Bonus extra.</P>
 
 						<style>
 							/* Adjust the width of the select and input elements to fit them in one line */
@@ -829,28 +827,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const countryValue = formData.get('country');
             const phoneValue = formData.get('phone');
 
-			
-
             // Perform validation
             if (nameValue.trim() === '') {
 				$("#emptyUsernameMsg").css("display", "block").text("Please enter your name.");
                 return; // Stop further processing if the name is empty
             }
 
-			if (isValidInput(nameValue) == false || isValidInput(countryValue) == false) {
-				$("#emptyUsernameMsg").css("display", "block").text("Invalid input! Please enter valid text.");
-				return; // Stop further processing if the name is empty				
-			}
-
-			
             if (emailValue.trim() === '') {
 				$("#emptyUsernameMsg").css("display", "block").text("Please enter your email.");
                 return; // Stop further processing if the email is empty
-            }
-
-			if (isValidEmail(emailValue) == false) {
-				$("#emptyUsernameMsg").css("display", "block").text("Invalid email address!");
-				return;
             }
 
             if (countryValue.trim() === '') {
@@ -862,13 +847,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				$("#emptyUsernameMsg").css("display", "block").text("Please enter your phone number.");
                 return; // Stop further processing if the email is empty
             }
-
-			if (isValidPhoneNumber(phoneValue) == false) {
-				$("#emptyUsernameMsg").css("display", "block").text("Invalid phone number!");
-				return;
-            }
-
-			
 
 			// $("#emptyUsernameMsg").css("display", "block").removeClass("alert-danger").addClass("alert-success").text("All required fields are filled. please submit the form");
 			$("#emptyUsernameMsg").css("display", "none");
@@ -927,25 +905,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			.catch(error => {
 				console.error('Error:', error);
 			});
-		}
-
-		function isValidEmail(email) {
-            // Regular expression pattern for basic email validation
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-			return emailPattern.test(email);
-        }
-
-		function isValidPhoneNumber(phone) {
-            // Regular expression pattern for basic phone number validation
-            const phonePattern = /^[0-9]{10}$/;
-            return phonePattern.test(phone);
-        }
-
-		function isValidInput(input) {
-			// Regular expression to check for potential script tags
-			const scriptPattern = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i;
-					
-			return !scriptPattern.test(input);
 		}
 
 		// Add event listener to the form submit button
