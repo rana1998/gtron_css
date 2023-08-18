@@ -55,9 +55,6 @@ if (isset($_GET['ref'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -72,45 +69,9 @@ if (isset($_GET['ref'])) {
 
 /* Style for the link */
 .referral-link {
-	color:#337ab7; /* You can adjust the color code as needed */
-	font-weight: bold;
-}
-
-/* styles.css */
-.social-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center; /* Center the buttons horizontally */
-  align-items: center; /* Center the buttons vertically */
-}
-
-.social-button {
-  display: inline-block;
-  font-size: 24px;
-  color: #007bff; /* Blue color for the icons */
-}
-
-
-/* Define colors for each social media platform */
-.facebook-color {
-  color: #1877F2; /* Facebook Blue */
-}
-
-.twitter-color {
-  color: #1DA1F2; /* Twitter Blue */
-}
-
-.instagram-color {
-  color: #C13584; /* Instagram Pink */
-}
-
-.linkedin-color {
-  color: #0A66C2; /* LinkedIn Blue */
-}
-
-.youtube-color {
-  color: #FF0000; /* YouTube Red */
-}
+		color:#337ab7; /* You can adjust the color code as needed */
+		font-weight: bold;
+	}
 
    </style>
    <script>
@@ -520,16 +481,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						
 						<div class="col-md-12 col-sm-12">
 							<textarea class="form-control" rows="6" name="message" placeholder="Your Message"></textarea>
-						</div>
-						
-						<div class="col-md-12 col-sm-12">
-							<div class="social-buttons">
-								<a href="https://www.facebook.com/gtronofficial" class="social-button facebook-color" target="_blank"><i class="bi bi-facebook"></i></a>
-								<a href="https://twitter.com/gtron_official?s=20" class="social-button twitter-color" target="_blank"><i class="bi bi-twitter"></i></a>
-								<a href="https://www.instagram.com/gtron_official/?igshid=NjIwNzIyMDk2Mg%3D%3D" class="social-button instagram-color" target="_blank"><i class="bi bi-instagram"></i></a>
-								<!-- <a href="#" class="social-button linkedin-color"><i class="bi bi-linkedin"></i></a> -->
-								<a href="https://www.youtube.com/@Gtron_official" class="social-button youtube-color" target="_blank"><i class="bi bi-youtube"></i></a>
-							</div>
 						</div>
 						
 						<div class="col-md-12 col-sm-12">

@@ -61,7 +61,6 @@
 .myText {
   font-weight: 800;
 }
-
    </style>
    <script>
 	// if (location.protocol !== 'https:' || location.hostname !== 'www.gtron.io') {
@@ -93,60 +92,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<div class="site-info">
 				<h1>
-                  <span style="background: #4d3a61; color: white!important; display: inline-block;padding:4px">Terms and Conditions</span>
+                  <span style="background: #4d3a61; color: white!important; display: inline-block;padding:4px">Privacy Policy</span>
                 </h1>       
-				<p style="margin-top:10px;">Welcome to the GTRON MLM Program, operated by GTRON Corporation . By participating in this Program, you agree to the following terms and conditions. Please read them carefully before joining in the program.</p>
+				<p style="margin-top:10px;">Welcome to the GTRON MLM Privacy Policy. This document outlines how GTRON Corporation  collects, uses, discloses, and protects your personal information in relation to your participation in the GTRON MLM Program . By participating in the Program, you acknowledge and consent to the practices described in this Privacy Policy.</p>
 		
 <div style="text-align:left;">
 
-<p> <span class="myText">  1. Program Overview: </span> <br>
 
-The GTRON MLM Program is a multi-level marketing initiative that allows Participants to earn commissions by promoting and selling GTRON products and services. Participants can recruit new members into their downline and earn bonuses based on the sales performance of their downline members.
+
+<p> <span class="myText"> Information We Collect : </span>
+
+We may collect various types of information from you as a Program participant, including:
+
+Personal Information: This includes your name, address, email address, phone number, date of birth, and other contact details required for enrollment and communication.
+
+Financial Information: In order to process commission payments, we may collect payment details, including bank account information and tax identification numbers.
+
+Business Information: This includes details about your GTRON MLM business, such as your sales activity, downline organization, and performance metrics.
+
+Website Usage Information: We may collect information about your interactions with our website, including IP addresses, browser type, and browsing patterns.
+
 </p>
 
-<p>  <span class="myText">  2. Eligibility: </span><br>
+<p><span class="myText">How We Use Your Information :</span>
 
-To participate in the GTRON MLM Program, you must be of legal age in your jurisdiction and abide by these terms and conditions. You are responsible for ensuring the accuracy and completeness of the information you provide during registration.
+We use your personal information for various purposes, including but not limited to:
+
+Enabling Participation: We use your information to enroll you in the GTRON MLM Program, provide you with a unique participant ID, and manage your business activities.
+
+Communication: We use your contact details to send you important updates, notifications, and promotional materials related to the Program.
+
+Commissions and Payments: Your financial information is used to process commission payments and comply with tax obligations.
+
+Performance Tracking: We use your business information to track your sales performance and calculate your earnings in accordance with the compensation plan.
+
+Analytics: We may analyze website usage data to improve our website's functionality and user experience.
+</p>
+
+<p> <span class="myText">Disclosure of Information :</span>
+
+We may share your information with the following entities:
+
+Downline Members: We may share information about your downline organization and performance with your upline members as per the MLM compensation plan.
+
+Service Providers: We may use third-party service providers to assist in various aspects of the Program, such as payment processing, communication, and website maintenance.
+
+Legal Requirements: We may disclose your information to comply with legal obligations, respond to legal requests, or protect our rights, privacy, safety, or property.
+</p>
+
+<p> <span class="myText"> Data Security :</span>
+
+We implement security measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no data transmission over the internet can be guaranteed as 100% secure, and we cannot ensure or warrant the security of any information you transmit to us.
 </p>
 
 <p>
-<span class="myText">  3. Enrollment: </span> <br>
+<span class="myText"> Your Choices :</span>
 
-To enroll in the Program, you must complete the online registration process on the official GTRON website. Upon successful registration, you will be provided with a unique Participant ID and a back-office dashboard for managing your business activities.
+You have certain rights regarding your personal information, including the right to access, correct, or delete your data. You can manage your preferences for communication and data usage by contacting us using the provided contact information.
+</p>
+
+<p><span class="myText"> Changes to Privacy Policy : </span>
+
+We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, operational, or regulatory reasons. The updated policy will be posted on our website, and your continued participation in the Program will constitute your acceptance of the updated policy.
+</p>
+
+<p> Contact Us </p>
+
+<p>
+If you have any questions, concerns, or requests related to your personal information or this Privacy Policy, please contact our Privacy Officer at [Contact Information].
 </p>
 
 <p>
-<span class="myText">  4. Compensation Plan: </span> <br>
-
-GTRON operates on a multi-level compensation plan, allowing you to earn commissions based on your personal sales and the sales generated by your downline members. The compensation plan structure, commission rates, and qualification criteria will be outlined in the official GTRON compensation plan document, which you will have access to upon enrollment.
+By participating in the GTRON MLM Program, you acknowledge that you have read and agree to the practices outlined in this Privacy Policy.
 </p>
 
 <p>
-<span class="myText">  5. Confidentiality: </span><br>
-
-
-During your participation in the Program, you may gain access to confidential information about GTRON's business operations, products, and strategies. You agree to keep such information confidential and not disclose it to any third parties.
-</p>
-
+	For more information about GTRON's general privacy practices, please refer to our  <a href="https://t.me/gtron_official" onclick = "clickMe()" target="_blank" id="telegramLink"><span class="rainbow-text animated">telegram</span>.
+	</a>
 <p>
-<span class="myText">  6. Changes to Terms: </span><br>
-
-
-GTRON reserves the right to modify these terms and conditions at any time. Participants will be notified of any changes, and continued participation implies acceptance of the updated terms.
-
-<p>
-
-<p>
-By enrolling in the GTRON MLM Program, you acknowledge that you have read, understood, and agree to abide by these terms and conditions. If you do not agree with these terms, please do not enroll in the Program.
-</p>
-
-<p>
-For questions or concerns, please contact us.
-</p>
-
-<p>
-By enrolling, you acknowledge that you have read and agree to these terms and conditions.    
-</p>
 
 </div>
 
